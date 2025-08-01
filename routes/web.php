@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [AppController::class,'index'])->name(name: 'app.index');
 Route::get('/shop', [ShopController::class,'index'])->name(name: 'shop.index');
+Route::get('/product/{slug}', [ShopController::class,'productDetails'])->name(name:'shop.product.details');
 
 
 Auth::routes();

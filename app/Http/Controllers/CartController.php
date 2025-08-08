@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Laravel\Ui\Presets\React;
 
 class CartController extends Controller
 {
@@ -22,6 +23,17 @@ class CartController extends Controller
 
     public function updateCart(Request $request){
         Cart::instance('cart')->update($request->rowId, $request->quantity);
+        return redirect()->route('cart.index');
+    }
+
+    public function removeItem(Request $request){
+        $rowId = $request->rowId;
+        Cart::instance('cart')->remove($rowId);
+        return redirect()->route('cart.index');
+    }
+
+    public function clearCart(){
+        Cart::instance('cart')->destroy();
         return redirect()->route('cart.index');
     }
 }

@@ -4,15 +4,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="MkRqEzTGuoSx6LqJUm0OAKxSgNUYt26wTT7RMUZY">
-    <link rel="manifest" href="manifest.json">
+    {{-- <meta name="csrf-token" content="MkRqEzTGuoSx6LqJUm0OAKxSgNUYt26wTT7RMUZY"> --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="manifest" href="{{ asset('public/build/manifest.json') }}">
     <link rel="apple-touch-icon" href="{{ asset('public/assets/images/favicon.ico') }}">
     <link rel="icon" href="{{ asset('public/assets/images/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('public/assets/images/favicon.ico') }}" type="image/x-icon">
     <meta name="theme-color" content="#e87316">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Surfside Media">
+  <!-- iOS support -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Surfside Media">
+
+<!-- New standard + Android support -->
+<meta name="mobile-web-app-capable" content="yes">
+
     <meta name="msapplication-TileImage" content="{{ asset('public/assets/images/favicon.ico') }}">
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -158,7 +164,7 @@
                                             <a href="wishlist/list.html">
                                                 <i data-feather="heart"></i>
                                                 <span id="wishlist-count" class="label label-theme rounded-pill">
-                                                    0
+                                                    {{  \Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content()->count() }}
                                                 </span>
                                             </a>
                                         </div>
@@ -168,7 +174,7 @@
                                             <a href="{{ route('cart.index') }}">
                                                 <i data-feather="shopping-cart"></i>
                                                 <span id="cart-count" class="label label-theme rounded-pill">
-                                                    {{ Cart::instance('cart')->content()->count() }}
+                                                    {{  \Gloudemans\Shoppingcart\Facades\Cart::instance('cart')->content()->count() }}
                                                 </span>
                                             </a>
                                         </div>

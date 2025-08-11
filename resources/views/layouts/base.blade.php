@@ -60,6 +60,7 @@
 
 <body class="theme-color4 light ltr">
     <style>
+
         header .profile-dropdown ul li {
             display: block;
             padding: 5px 20px;
@@ -122,7 +123,7 @@
                             <div class="menu-left">
                                 <div class="brand-logo">
                                     <a href="{{ route('app.index') }}">
-                                        <img src="{{ asset('public/assets/images/logo.png') }}" class="h-logo img-fluid blur-up lazyload" alt="logo">
+                                        <img src="{{ asset('public/assets/images/logo.png') }}" class="h-logo img-fluid blur-up lazyload" alt="logo" style="height: 70px;">
                                     </a>
                                 </div>
 
@@ -161,7 +162,7 @@
                                     </li>
                                     <li class="onhover-dropdown wislist-dropdown">
                                         <div class="cart-media">
-                                            <a href="wishlist/list.html">
+                                            <a href="{{ route('wishlist.list') }}">
                                                 <i data-feather="heart"></i>
                                                 <span id="wishlist-count" class="label label-theme rounded-pill">
                                                     {{  \Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->content()->count() }}
